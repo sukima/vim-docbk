@@ -2,7 +2,7 @@
 " Language:	DocBook
 " Maintainer:	Devin Weaver <vim@tritarget.com>
 " URL:		https://github.com/sukima/vim-docbk
-" Version:	1.2.0
+" Version:	1.2.1
 " Thanks to Johannes Zellner <johannes@zellner.org> for the default to XML
 " suggestion.
 
@@ -13,7 +13,6 @@
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
-echo "Debugging"
 if version < 600
   syntax clear
 elseif exists("b:current_syntax")
