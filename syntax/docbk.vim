@@ -13,6 +13,7 @@
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
+echo "Debugging"
 if version < 600
   syntax clear
 elseif exists("b:current_syntax")
@@ -38,6 +39,9 @@ elseif 'sgml' == b:docbk_type
     syn cluster sgmlRegionHook add=docbkRegion,docbkTitle,docbkRemark,docbkCite
     syn case ignore
 endif
+
+" Enable spell checking.
+syn spell toplevel
 
 " <comment> has been removed and replace with <remark> in DocBook 4.0
 " <comment> kept for backwards compatability.
@@ -116,11 +120,11 @@ syn keyword docbkKeyword videodata videoobject void volumenum warning contained
 syn keyword docbkKeyword wordasword xref year contained
 
 " Add special emphasis on some regions. Thanks to Rory Hunter <roryh@dcs.ed.ac.uk> for these ideas.
-syn region docbkRegion start="<emphasis>"lc=10 end="</emphasis>"me=e-11 contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity keepend
-syn region docbkTitle  start="<title>"lc=7     end="</title>"me=e-8	contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity keepend
-syn region docbkRemark start="<remark>"lc=8    end="</remark>"me=e-9	contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity keepend
-syn region docbkRemark start="<comment>"lc=9  end="</comment>"me=e-10	contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity keepend
-syn region docbkCite   start="<citation>"lc=10 end="</citation>"me=e-11 contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity keepend
+syn region docbkRegion start="<emphasis>"lc=10 end="</emphasis>"me=e-11 contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity,@Spell keepend
+syn region docbkTitle  start="<title>"lc=7     end="</title>"me=e-8	contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity,@Spell keepend
+syn region docbkRemark start="<remark>"lc=8    end="</remark>"me=e-9	contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity,@Spell keepend
+syn region docbkRemark start="<comment>"lc=9  end="</comment>"me=e-10	contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity,@Spell keepend
+syn region docbkCite   start="<citation>"lc=10 end="</citation>"me=e-11 contains=xmlRegion,xmlEntity,sgmlRegion,sgmlEntity,@Spell keepend
 
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
